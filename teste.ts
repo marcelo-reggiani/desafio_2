@@ -1,0 +1,1 @@
+textSpanEnd.ts
