@@ -15,16 +15,17 @@ model Event {
   name       String
   date       DateTime
   description String
-  place      Place[]
-  category   Category[]
-
+  category   Category @relation(fields: [category_id], references: [id])
+  category_id String
+  place      Place @relation(fields: [place_id], references: [id])
+  place_id   String
   @@map("events")
 }
 
 model Category {
   id         String   @id @default(uuid())
   name       String   @unique
-  event      Event    @relation(fields: [name], references: [id])
+  event      Event[]
 
   @@map("categories")
 }
@@ -32,7 +33,7 @@ model Category {
 model Place {
   id         String   @id @default(uuid())
   name       String   @unique
-  event      Event    @relation(fields: [name], references: [id])
+  event      Event[]
 
   @@map("places")
 }

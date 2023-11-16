@@ -4,15 +4,16 @@ import { prismaClient } from '../database/prismaClient';
 export class CreateCategoryController{
   async handle(request: Request, response: Response) {
     try {
-        const { name, event_id } = request.body;
+        const { name } = request.body;
 
         const category = await prismaClient.category.create({
           data:{
-            name,
+            name
           }
         });
       return response.status(201).json(category);
     } catch (error) {
+      console.log(error);
       return response.status(500).json({ error: 'An error occurred' });
     }
   }

@@ -24,3 +24,4 @@ const listPlace = new ListPlaceController();
 router.get("/listPlace", listPlace.handle);
 
 export { router };
+ 

@@ -4,11 +4,11 @@ import { prismaClient } from '../database/prismaClient';
 export class CreatePlaceController{
   async handle(request: Request, response: Response) {
     try {
-        const { name, event_id } = request.body;
+        const { name } = request.body;
 
         const place = await prismaClient.place.create({
           data:{
-            name,
+            name
           }
         });
       return response.status(201).json(place);
